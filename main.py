@@ -28,18 +28,6 @@ def parse_toot(toot):
 
     soup = BeautifulSoup(toot.content, "html.parser")
     
-    # pull the mentions out
-    # for mention in soup.select("span.h-card"):
-    #     mention.unwrap()
-
-    # for mention in soup.select("a.u-url.mention"):
-    #     mention.unwrap()
-
-    # we will destroy the mentions until we're ready to use them
-    # someday turbocat, you will talk to your sibilings
-    for mention in soup.select("span.h-card"):
-        mention.decompose()
-    
     # make all linebreaks actual linebreaks
     for lb in soup.select("br"):
         lb.insert_after("\n")
@@ -54,10 +42,9 @@ def parse_toot(toot):
     for ht in soup.select("a.hashtag"):
         ht.unwrap()
 
-    # unwrap all links (i like the bots posting links)
+    # remove all links
     for link in soup.select("a"):
-        link.insert_after(link["href"])
-        link.decompose()
+        link.extract()
 
     text = map(lambda a: a.strip(), soup.get_text().strip().split("\n"))
 
