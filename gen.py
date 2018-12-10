@@ -3,7 +3,7 @@ import json
 import time
 from mastodon import Mastodon
 
-api_base_url = "https://botsin.space"
+api_base_url = "https://beeping.town"
 
 client = Mastodon(
         client_id="clientcred.secret", 

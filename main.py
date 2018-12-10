@@ -3,7 +3,7 @@ from os import path
 from bs4 import BeautifulSoup
 import re
 
-api_base_url = "https://botsin.space"
+api_base_url = "https://beeping.town"
 scopes = ["read:statuses", "read:accounts", "read:follows", "write:statuses"]
 
 if not path.exists("clientcred.secret"):
