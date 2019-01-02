@@ -13,9 +13,9 @@ client = Mastodon(
 with open("corpus.txt") as fp:
     model = markovify.NewlineText(fp.read())
 
-print("tooting")
+print("posting")
 sentence = None
 # you will make that damn sentence
 while sentence is None:
     sentence = model.make_sentence(tries=100000)
-client.status_post(sentence.replace("\0", "\n"),spoiler_text="markov 🤖",visibility="unlisted")
+client.status_post(sentence.replace("\0", "\n"),visibility="unlisted")
